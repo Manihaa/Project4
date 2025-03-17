@@ -4,6 +4,8 @@ public class Game {
     private Scanner scan;
     private String[][] board;
     private boolean end;
+    private HiddenWord hiddenWord;
+    private Guess guess;
 
     public Game(){
         scan = new Scanner(System.in);
@@ -15,7 +17,7 @@ public class Game {
         System.out.println("Welcome to Wordle!\nHow long do you want the word to be?\n(4 or 5)");
         int len = scan.nextInt();
         while (!(len == 4 || len == 5)){
-            System.out.println("Invalid answer.\n(3, 4, or 5)");
+            System.out.println("Invalid answer.\n(4 or 5)");
             len = scan.nextInt();
         }
 
@@ -26,16 +28,24 @@ public class Game {
             lang = scan.nextLine();
         }
 
-        HiddenWord hiddenWord = new HiddenWord(len, lang);
+        hiddenWord = new HiddenWord(len, lang);
+        guess = new Guess(hiddenWord.getHidden());
         boardMaker(len);
+
+        System.out.println("Remember,\nthe word must be "
+                + len + " letters long,\nin "
+                + lang + ", and you only have 6 guesses.\nGood luck!");
 
         while(!end){
             ask();
         }
+
         System.out.println("");
     }
 
     public void ask(){
+        System.out.print("Enter your guess: ");
+        String answer = scan.nextLine().toLowerCase();
 
     }
 
