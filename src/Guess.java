@@ -1,8 +1,10 @@
 public class Guess {
     private String hidden;
-    //make four child classes of correct, incorrect, close, and empty
+    private int len;
+
     public Guess(String word){
         hidden = word;
+        len = hidden.length();
     }
 
     public boolean valid(String word){
@@ -11,7 +13,9 @@ public class Guess {
         return boo;
     }
 
-    public Guess[] attempt(){
-        //idk anymore man
+    public String[] attempt(){
+        //returns for each letter whether it was
+        // correct, wrong, or close so the game class can set
+        // each letter to the correct subclass
     }
 }
