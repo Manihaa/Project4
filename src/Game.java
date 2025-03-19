@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
 public class Game {
-    private Scanner scan;
-    private String[][] board;
-    private boolean end;
-    private HiddenWord hiddenWord;
-    private Guess guess;
+    private Scanner scan; //for gaining input
+    private Guess[][] board; //for the gameplay visual
+    private boolean end; //set to true to end the ask() loop
+    private HiddenWord hiddenWord; //the hidden word class
+    private Guess guess; //why do i have this?
 
     public Game(){
         scan = new Scanner(System.in);
-        board = new String[][]{};
+        board = new Guess[][]{};
         end = false;
     }
 
@@ -50,10 +50,10 @@ public class Game {
     }
 
     private void boardMaker(int num){
-        board = new String[6][num];
+        board = new Guess[6][num];
         for (int r = 0; r < 6; r++){
             for (int c = 0; c < num; c++){
-                board[r][c] = "x";
+                board[r][c] = new Guess(hiddenWord.getHidden());
             }
         }
     }
