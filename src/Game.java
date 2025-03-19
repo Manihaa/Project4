@@ -46,6 +46,9 @@ public class Game {
     public void ask(){
         System.out.print("Enter your guess: ");
         String answer = scan.nextLine().toLowerCase();
+        if (guess.isValid(answer)){
+            //try to return an array or replace the board with smth
+        }
 
     }
 
