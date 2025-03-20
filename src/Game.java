@@ -6,11 +6,13 @@ public class Game {
     private boolean end; //set to true to end the ask() loop
     private HiddenWord hiddenWord; //the hidden word class
     private Guess guess; //why do i have this?
+    private int attempt; //number of tries taken to keep track of what row to edit board and to also end the game
 
     public Game(){
         scan = new Scanner(System.in);
         board = new Guess[][]{};
         end = false;
+        attempt = 0;
     }
 
     public void start(){
@@ -48,8 +50,24 @@ public class Game {
         String answer = scan.nextLine().toLowerCase();
         if (guess.isValid(answer)){
             //try to return an array or replace the board with smth
-        }
+            String[] array = new String[answer.length()];
+            for (int i = 0; i < array.length; i++){
+                array[i] = answer.substring(i, i+1);
+            }
 
+            String[] checked = guess.attempt(array);
+
+            for (int i = 0; i < checked.length; i++){
+                if (checked[i].equals("close")){
+                    board[attempt][i] = new CloseGuess(hiddenWord.getHidden(), array[i]);
+                }else if(checked[i].equals("correct")){
+                    board[attempt][i] = new CorrectGuess(hiddenWord.getHidden(), array[i]);
+                }else if(checked[i].equals("wrong")){
+                    board[attempt][i] = new WrongGuess(hiddenWord.getHidden(), array[i]);
+                }
+            }
+
+        }
     }
 
     private void boardMaker(int num){
@@ -61,4 +79,7 @@ public class Game {
         }
     }
 
+    public void printBoard(){
+        // print the board after setting it in ask
+    }
 }
