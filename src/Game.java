@@ -46,7 +46,8 @@ public class Game {
 
         System.out.println("\nRemember, the word must be "
                 + len + " letters long,\nin "
-                + lang + ",\nand you only have 6 guesses.\nGood luck!\n");
+                + lang + ",\nno duplicate letters or numbers," +
+                "\nand you only have 6 guesses.\nGood luck!\n");
 
         while(!end){
             ask();
@@ -57,6 +58,7 @@ public class Game {
             System.out.println("The word was " + hiddenWord.getHidden() + ".\nBetter luck next time.");
         }
     }
+
 
     public void ask(){
         System.out.print("Enter your guess: ");
