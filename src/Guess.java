@@ -40,7 +40,4 @@ public class Guess {
         return checked;
     }
 
-    public void setLetter(){
-        //based on whether the letter was incorrect, correct, or close
-    }
 }
