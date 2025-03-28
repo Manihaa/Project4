@@ -39,9 +39,17 @@ public class HiddenWord {
     }
 
     private void listSetter(){
-        e4 = new String[]{"fail", "gasp", "palm", "lick", "know"};
-        e5 = new String[]{"dream", "start", "again", "known", "dance"};
-        s4 = new String[]{"como", "pero", "gato", "once", "leer"};
-        s5 = new String[]{"chica", "nadar", "jardin", "libro", "punto"};
+        e4 = new String[]{"fail", "gasp", "palm", "lick", "know",
+                "airy", "axis", "evil", "farm", "goal",
+        "gift", "glue", "item", "quiz", "vote",
+        "wind", "wash", "yard", "zero", "cake"};
+        e5 = new String[]{"dream", "start", "smirk", "known", "dance",
+        "alone", "brain", "chest", "glove", "learn",
+        "movie", "proud", "smile", "steal", "throw",
+        "water", "youth", "ratio", "heart", "fresh"};
+        s4 = new String[]{"como", "pero", "gato", "once", "leer",
+                "hijo", "hija"};
+        s5 = new String[]{"chica", "nadar", "jardin", "libro", "punto",
+        "primo", "prima", "tocar"};
     }
 }
