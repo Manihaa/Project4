@@ -4,9 +4,9 @@ public class Game {
     private Scanner scan; //for gaining input
     private Guess[][] board; //for the gameplay visual
     private boolean end; //set to true to end the ask() loop
-    private boolean win;
+    private boolean win; // determines the final print statements
     private HiddenWord hiddenWord; //the hidden word class
-    private Guess guess; //why do i have this?
+    private Guess guess; //main guess object to initialize
     private int attempt; //number of tries taken to keep track of what row to edit board and to also end the game
 
     public Game(){
@@ -52,6 +52,10 @@ public class Game {
         while(!end){
             ask();
         }
+
+        System.out.println("\nClose Guesses: " + countCloseGuesses());
+        System.out.println("WrongGuesses: " + countWrongGuesses());
+
         if (win){
             System.out.println("Congratulations!\nIt took you " + attempt + " tries to win!");
         }else{
@@ -89,21 +93,21 @@ public class Game {
         }
     }
 
-    private void boardMaker(int num){
-        board = new Guess[6][num];
-        for (int r = 0; r < 6; r++){
-            for (int c = 0; c < num; c++){
-                board[r][c] = new Guess(hiddenWord.getHidden());
-            }
-        }
-    }
-
     public void printBoard(){
         for (int r = 0; r < 6; r++){
             for (int c = 0; c < board[r].length; c++){
                 System.out.print(board[r][c].getLetter() + "  ");
             }
             System.out.println();
+        }
+    }
+
+    private void boardMaker(int num){
+        board = new Guess[6][num];
+        for (int r = 0; r < 6; r++){
+            for (int c = 0; c < num; c++){
+                board[r][c] = new Guess(hiddenWord.getHidden());
+            }
         }
     }
 
@@ -122,5 +126,29 @@ public class Game {
             end = true;
             win = true;
         }
+    }
+
+    private int countCloseGuesses(){
+        int num = 0;
+        for (int r = 0; r < board.length; r++){
+            for (int c = 0; c < board[r].length; c++){
+                if (board[r][c] instanceof CloseGuess){
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+
+    private int countWrongGuesses(){
+        int num = 0;
+        for (int r = 0; r < board.length; r++){
+            for (int c = 0; c < board[r].length; c++){
+                if (board[r][c] instanceof WrongGuess){
+                    num++;
+                }
+            }
+        }
+        return num;
     }
 }
