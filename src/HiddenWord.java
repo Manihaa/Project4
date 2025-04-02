@@ -20,7 +20,7 @@ public class HiddenWord {
 
     public String word(){
         String str = "";
-        int rand = (int)(Math.random() * 20 + 1);
+        int rand = (int)(Math.random() * 19 + 1);
 
         if (lang.equals("e")){
             if (length == 4){ //english and 4
