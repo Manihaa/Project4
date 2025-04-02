@@ -54,7 +54,7 @@ public class Game {
         }
 
         System.out.println("\nClose Guesses: " + countCloseGuesses());
-        System.out.println("WrongGuesses: " + countWrongGuesses());
+        System.out.println("Wrong Guesses: " + countWrongGuesses());
 
         if (win){
             System.out.println("Congratulations!\nIt took you " + attempt + " tries to win!");
